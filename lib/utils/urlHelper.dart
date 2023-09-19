@@ -4,6 +4,11 @@
 
 class UrlHelper{
 
+  static String urlForReferenceImage(String photoReferenceId){
+     return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$phtoReferenceId&key=$USER_KEY";
+
+  }
+
 
 static String urlForPlaceKeywordAndLocation(String keyword, double latitude, double longitude, String USER_KEY)
 {

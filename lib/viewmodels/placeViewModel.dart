@@ -3,10 +3,10 @@ import 'package:freash_news/models/place.dart';
 
 
 class PlaceViewModel{
-  Place _place;
+  late Place _place ;
 
   PlaceViewModel(Place place){
-    this._place = place;
+    _place = place;
 
   }
 

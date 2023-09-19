@@ -12,13 +12,14 @@ class Place{
 
   factory Place.fromJson(Map<String, dynamic> json){
     final location = json["geometry"]["location"];
+    Iterable photos  = json["photos"];
 
     return Place(
       placeId: json["place_id"],
       name: json["name"],
       latitude: location["lat"],
       longitude: location["lng"],
-      photoURL: (json["photo"][0])["photo_reference"]
+      photoURL: photos == null ? "images/place-holder.png" : photos.first["photo_reference"].toString() // (json["photo"][0])["photo_reference"]
 
     );
   }

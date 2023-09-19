@@ -4,10 +4,7 @@ import 'package:freash_news/models/place.dart';
 import 'package:freash_news/utils/urlHelper.dart';
 import 'package:http/http.dart' as http;
 
-class Webservice1{
-
-
-
+class Webservice1 {
 
   Future<List<Place>> fetchPlacesByKeywordAndPosition(String keyword, double latittude, double longitutde) async {
 
@@ -21,7 +18,7 @@ class Webservice1{
     {
       final jsonResponse = jsonDecode(response.body);
       final Iterable results = jsonResponse["results"];
-      results.map((place) => Place.fromJson(place)).toList();
+      return results.map((place) => Place.fromJson(place)).toList();
 
 
     }
