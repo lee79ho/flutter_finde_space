@@ -74,6 +74,7 @@ TextEditingController _controller = new TextEditingController();
           suffixIcon: IconButton(
             icon: Icon(Icons.clear),
             onPressed: (){
+            //  Webservice().saveIncident();
             _controller.clear();
             },
           )

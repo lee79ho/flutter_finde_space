@@ -6,7 +6,7 @@ class Incident{
   final String description;
 
 
-  Incident({this.title, this.description});
+  Incident({required this.title, required this.description});
 
   factory Incident.fromJSON(Map<String, dynamic> json){
     return Incident(

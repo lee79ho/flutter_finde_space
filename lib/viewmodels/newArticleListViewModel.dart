@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:freash_news/models/newsArticle.dart';
 import 'package:freash_news/service/webservice.dart';
+import 'package:freash_news/service/webservice2.dart';
 import 'package:freash_news/viewmodels/newsArticleViewModel.dart';
 enum LoadingStatus{
   completed,
@@ -20,7 +21,7 @@ class NewsArticleListViewModel extends ChangeNotifier{
 
 
   Future<void> search(String keyword) async{
-    List<NewsArticle> newsArticles =  await Webservice().fetchHeadlinesByKeyword(keyword);
+    List<NewsArticle> newsArticles =  await Webservice2().fetchHeadlinesByKeyword(keyword);
     this.articles = newsArticles.map((article) => NewsArticleViewModel(article: article)).toList();
     this.loadingStatus = this.articles.isEmpty ? LoadingStatus.empty : LoadingStatus.completed;
     notifyListeners();
@@ -29,7 +30,7 @@ class NewsArticleListViewModel extends ChangeNotifier{
   
 
   Future<void> populateTopHeadlines() async {
-    List<NewsArticle> newsArticles = await Webservice().fetchTopHeadLines();
+    List<NewsArticle> newsArticles = await Webservice2().fetchTopHeadLines();
     
     this.articles = newsArticles.map((article) => NewsArticleViewModel(article: article))
     .toList();

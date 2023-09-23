@@ -27,7 +27,7 @@ class PlaceList extends StatelessWidget {
           leading: Container(
             width: 100,
             height: 100,
-            child: Image.network(UrlHelper.urlForReferenceImage(place.photoURL), fit: BoxFit.cover)
+            child: Image.network(UrlHelper.urlForReferenceImage(place.photoURL,"hhh"), fit: BoxFit.cover)
             ),
           
           title: Text(place.name)

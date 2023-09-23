@@ -1,13 +1,20 @@
 
 import 'package:flutter/material.dart';
+import 'package:freash_news/models/incident.dart';
 import 'package:freash_news/pages/incident_report_page.dart';
+import 'package:freash_news/viewmodels/report_incident_view_model.dart';
 import 'package:freash_news/widgets/incident_list.dart';
+import 'package:provider/provider.dart';
 
 class IncidentListPage extends StatelessWidget{
 
   Future<void> _navigateToReportIncidentPage(BuildContext context) async{
     await Navigator.push(context, 
-    MaterialPageRoute(builder: (context)=> IncidentReportPage(),
+    MaterialPageRoute(builder: (context)=> 
+    ChangeNotifierProvider(
+      create: (context) => ReportIncidentViewModel(),
+      child: IncidentReportPage(),
+    ),
     fullscreenDialog: true
 
     ));
