@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freash_news/pages/homePage.dart';
+
+import 'package:freash_news/pages/incident_list_page.dart';
 import 'package:freash_news/viewmodels/newArticleListViewModel.dart';
 import 'package:freash_news/pages/newsListPage.dart';
 import 'package:provider/provider.dart';
@@ -15,12 +16,19 @@ class App extends StatelessWidget{
 
     // return MaterialApp(
     //   home: HomePage());
+    // return MaterialApp(
+    //   title: "Fresh Nes",
+    //   home: ChangeNotifierProvider(
+    //     create: (_) => NewsArticleListViewModel(),
+    //     //builder: (_) => NewsArticleListViewModel(),
+    //     child: NewsListPage()
+    //   )
+    // );
+
     return MaterialApp(
-      title: "Fresh Nes",
-      home: ChangeNotifierProvider(
-        create: (_) => NewsArticleListViewModel(),
-        //builder: (_) => NewsArticleListViewModel(),
-        child: NewsListPage()
+      title: "City Care",
+      home: IncidentListPage(
+
       )
     );
   }

@@ -9,7 +9,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PlaceListViewModel extends ChangeNotifier
 {
-  var places = List<PlaceViewModel>();
+  var places = List<PlaceViewModel>;//List<PlaceViewModel>();
   var mapType = MapType.normal;
 
   void toggleMapType()
@@ -21,7 +21,9 @@ class PlaceListViewModel extends ChangeNotifier
   Future<void> fetchPlacesByKeywordAndPosition(String keyword, double latitude, double longitude) async {
 
     final result = await Webservice1().fetchPlacesByKeywordAndPosition(keyword, latitude, longitude);
-    this.places = result.map((place) => PlaceViewModel(place)).toList();
+   // this.places =
+  
+   // result.map((places) => PlaceViewModel(places))// result.map((place) => PlaceViewModel(place)).toList();
     notifyListeners();
 
   }
