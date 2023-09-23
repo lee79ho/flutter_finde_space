@@ -1,5 +1,6 @@
 
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -17,4 +18,20 @@ class Webservice {
     );
   }
   
+  Future<List<Incident>> getAllIncidents() async {
+
+    final url = "http://192.168.0.4:3000/incidents";
+
+    final response = await Dio().get(url);
+
+    if(response.statusCode == 200){
+
+      final Iterable json = response.data;//jsonDecode(response.data);
+      return json.map((incident) => Incident.fromJSON(incident)).toList();
+
+    }else {
+      throw Exception("Unable to get incdent");
+    }
+
+  }
 }
