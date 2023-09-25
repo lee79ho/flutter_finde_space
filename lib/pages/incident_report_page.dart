@@ -1,11 +1,44 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:freash_news/viewmodels/report_incident_view_model.dart';
 import 'package:provider/provider.dart';
 
 class IncidentReportPage extends StatelessWidget {
   
+  void _showPhotoSelectionOptions(BuildContext context){
+
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          height: 150,
+          child: Column(children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.photo_camera),
+              title: Text("Take a picture")
+              ),
+              ListTile(
+                leading: Icon(Icons.photo_album),
+                title:Text("Select from photo library")
+              )
+          ]
+          )
+          );
+      }
+
+    );
+
+
+  }
 
   final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    backgroundColor: Colors.green,
+    padding: EdgeInsets.all(0),
+  );
+
+    final ButtonStyle topflatButtonStyle = TextButton.styleFrom(
+    minimumSize: Size(100, 30),
     backgroundColor: Colors.grey,
     padding: EdgeInsets.all(0),
   );
@@ -23,6 +56,20 @@ class IncidentReportPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
+
+          Image.asset("images/houston.jpg"),
+
+          TextButton(
+          style: topflatButtonStyle,
+          onPressed: () {
+            _showPhotoSelectionOptions(context);
+          },
+          child: Text(
+           "Take Picture",
+             style: TextStyle(color: Colors.white),
+          ),
+         ),
+
           TextField(
             onChanged: (value) => vm.title = value,
 

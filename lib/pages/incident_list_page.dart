@@ -39,8 +39,8 @@ class IncidentListPage extends StatelessWidget{
                   child: Icon(Icons.add),
                   onPressed: (){
                    final incidents =  Webservice().getAllIncidents();
-                   debugPrint("$incidents");
-                   // _navigateToReportIncidentPage(context);
+                 //  debugPrint("$incidents");
+                    _navigateToReportIncidentPage(context);
                   },
                   ),
               )
