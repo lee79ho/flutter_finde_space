@@ -2,9 +2,45 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:freash_news/viewmodels/report_incident_view_model.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class IncidentReportPage extends StatelessWidget {
+
+  @override
+  _IncidentReportPageState createState() => _IncidentReportPageState();
+  
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+class _IncidentReportPageState extends State<IncidentReportPage>{
+
+
+
+  late ReportIncidentViewModel _reportIncidentViewModel;
+
+  @override
+  void initState(){
+    super.initState();
+    _reportIncidentViewModel = Provider.of<ReportIncidentViewModel>(context, listen: false);
+
+  }
+
+  
+
+  void _showPhotoAlbum() async {
+
+
+   final image  = await ImagePicker().pickImage(source: ImageSource.gallery);//.pickImage(source: ImageSource.gallery);
+  
+    setState((){
+      _reportIncidentViewModel.imagePath = image!.path;
+    });
+  }
   
   void _showPhotoSelectionOptions(BuildContext context){
 
@@ -19,6 +55,10 @@ class IncidentReportPage extends StatelessWidget {
               title: Text("Take a picture")
               ),
               ListTile(
+                onTap(){
+                  Navigator.of(context).pop();
+                  _showPhotoAlbum();
+                },
                 leading: Icon(Icons.photo_album),
                 title:Text("Select from photo library")
               )
