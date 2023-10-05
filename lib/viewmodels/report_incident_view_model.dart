@@ -10,7 +10,9 @@ class ReportIncidentViewModel extends ChangeNotifier
 
   late String title;
   late String description;
-  late String imagePath;
+  String? imagePath;
+
+
 
 
 
