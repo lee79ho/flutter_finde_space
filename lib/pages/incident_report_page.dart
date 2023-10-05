@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:freash_news/pages/take_picture_page.dart';
 import 'package:freash_news/viewmodels/report_incident_view_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +33,16 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
 
   }
 
-  
+  void _showCamera() async
+  {
+    final cameras = await availableCameras();
+    final camera = cameras.first;
+
+    Navigator.push(context,
+    MaterialPageRoute(
+      builder:(context) => TakePicturePage(camera: camera)));
+    
+  }
 
   void _showPhotoAlbum() async {
 
@@ -52,6 +63,10 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
           height: 150,
           child: Column(children: <Widget>[
             ListTile(
+              onTap: () {
+                Navigator.of(context).pop();
+                _showCamera();
+              },
               leading: Icon(Icons.photo_camera),
               title: Text("Take a picture")
               ),
