@@ -38,9 +38,13 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
     final cameras = await availableCameras();
     final camera = cameras.first;
 
-    Navigator.push(context,
+    final result = await Navigator.push(context,
     MaterialPageRoute(
       builder:(context) => TakePicturePage(camera: camera)));
+
+      setState(() {
+        _reportIncidentViewModel.imagePath = result;
+      });
     
   }
 
@@ -113,7 +117,7 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
 
-          vm.imagePath == null ? Image.asset("images/houston.jpg") :  Image.file(File(vm.imagePath!)),
+          vm.imagePath != null ?  Image.file(File(vm.imagePath!)) : Image.asset("images/houston.jpg"),
 
 
 

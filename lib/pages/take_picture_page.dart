@@ -2,6 +2,8 @@
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart';
 
 class TakePicturePage extends StatefulWidget{
 
@@ -29,6 +31,25 @@ class _TakePicturePage extends State<TakePicturePage>{
 
   }
 
+  void _takePicture(BuildContext context) async
+  {
+    try{
+      await _initializeCameraControllerFuture;
+      final path = join((await getTemporaryDirectory()).path, '${DateTime.now()}.png');
+
+     
+      debugPrint("$path");
+      XFile picture = await _cameraController.takePicture();
+      picture.saveTo(path);
+      Navigator.pop(context, path);
+
+    }
+    catch(e)
+    {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -40,7 +61,24 @@ class _TakePicturePage extends State<TakePicturePage>{
       else{
         return Center(child:CircularProgressIndicator());
       }
-    })
+    },
+
+    ),
+    SafeArea(
+      child:Align(
+      alignment: Alignment.bottomRight,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: FloatingActionButton(
+          backgroundColor: Colors.black, 
+          child: Icon(Icons.camera),
+          onPressed: (){
+            _takePicture(context);
+          },
+          ),
+          ),
+      ),
+    )
    ]);
   }
 

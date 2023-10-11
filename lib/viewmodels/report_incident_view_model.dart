@@ -18,7 +18,7 @@ class ReportIncidentViewModel extends ChangeNotifier
 
   Future<void> saveIncident() async {
     
-    final incident = Incident(title: title, description: description);
+    final incident = Incident(title: title, description: description, imageURL: imagePath!);
     await Webservice().saveIncident(incident);
     //TODO
     

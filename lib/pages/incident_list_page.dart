@@ -30,7 +30,7 @@ class IncidentListPage extends StatelessWidget{
       ),
       body: Stack(
         children: <Widget>[
-            IncidentList(),
+            IncidentList(incidents: [],),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
@@ -39,7 +39,7 @@ class IncidentListPage extends StatelessWidget{
                   child: Icon(Icons.add),
                   onPressed: (){
                    final incidents =  Webservice().getAllIncidents();
-                 //  debugPrint("$incidents");
+                   debugPrint("$incidents");
                     _navigateToReportIncidentPage(context);
                   },
                   ),

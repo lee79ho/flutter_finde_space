@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:freash_news/pages/incident_list_page.dart';
+import 'package:freash_news/viewmodels/incident_list_view_model.dart';
 import 'package:freash_news/viewmodels/newArticleListViewModel.dart';
 import 'package:freash_news/pages/newsListPage.dart';
 import 'package:provider/provider.dart';
@@ -27,8 +28,10 @@ class App extends StatelessWidget{
 
     return MaterialApp(
       title: "City Care",
-      home: IncidentListPage(
-
+      home:
+      ChangeNotifierProvider(
+        create: (context) => IncidentListViewModel(),
+        child: IncidentListPage()
       )
     );
   }
