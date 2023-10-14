@@ -33,6 +33,10 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
 
   }
 
+  void _saveIncident(BuildContext context) async{
+    await _reportIncidentViewModel.saveIncident();
+    Navigator.pop(context);
+  }
   void _showCamera() async
   {
     final cameras = await availableCameras();
@@ -156,8 +160,8 @@ class _IncidentReportPageState extends State<IncidentReportPage>{
          TextButton(
           style: flatButtonStyle,
           onPressed: () {
-            vm.saveIncident();
-            Navigator.pop(context);
+            _saveIncident(context);
+    
           },
           child: Text(
            "Save",

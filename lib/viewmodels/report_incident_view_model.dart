@@ -20,6 +20,7 @@ class ReportIncidentViewModel extends ChangeNotifier
     
     final incident = Incident(title: title, description: description, imageURL: imagePath!);
     await Webservice().saveIncident(incident);
+    notifyListeners();
     //TODO
     
   }
